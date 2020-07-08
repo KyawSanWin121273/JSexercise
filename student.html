@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            function Name(){
+                var n=document.getElementById("name").value;
+                var i=document.createElement("input");
+                i.value=n;
+                document.body.appendChild(i);
+                document.body.appendChild(document.createElement("br"));
+                document.getElementById("name").value;
+
+            }
+        </script>
+        </head>
+        <body>
+            <label>Task Name:</label>
+            <input type="text" id="name">
+            <button type="submit" onclick="Name()">Add</button><br>
+            <p id="txt">Task list</p>
+        </body>
+   
+</html>
