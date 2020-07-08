@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head> Date of Birth</head>
+        <body>
+           
+                <label>Enter a nmuber:</label><br>
+                <input type="date"  id="date"><br>
+                <button type="button" onclick="checkage()" >Calculate</button><br>
+                <script>
+                function checkage(){
+                    var age=parseInt(document.getElementById("date").value);
+                    var date1=new Date();
+                    var year1=date1.getFullYear();
+                    var date2=new Date(age);
+                    var year2=date2.getFullYear();
+                    if(year1-year2<20){
+                        alert("Your age is under 20");
+                    }
+                    else{
+                        alert("Your age is over 20");
+                    
+                    }
+                }
+            </script>
+          
+          
+          
+        </body>
+</html>
