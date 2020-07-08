@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+
+    <script>
+        function filterNum() {
+            
+            var num1 = parseInt(document.getElementById('numOne').value);
+
+            if (num1 % 2 == 0) {
+                alert("Your Number is Even");
+            }
+            else {
+
+                alert("Your Number is odd");
+            }
+        }
+    </script>
+
+    <label>From:</label>
+    <input type="number" placeholder="Enter number" id="numOne"><br>
+    <button type="button" onclick="filterNum()">Filter</button>
+
+</body>
+
+</html>
