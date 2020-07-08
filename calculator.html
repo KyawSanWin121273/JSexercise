@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <body>
+            <script type="text/javascript">
+            function add(){
+               var n1= document.getElementById("fn").value;
+               var n2= document.getElementById("sn").value;
+              var result=parseInt(n1)+parseInt(n2);
+              document.getElementById('lblResult').innerHTML=result;alert("Your result is"+result);
+            }
+            function addnum(){
+                return n1+n2;
+            }
+            function sub(){
+               var n1= document.getElementById("fn").value;
+               var n2= document.getElementById("sn").value;
+              var result=parseInt(n1)-parseInt(n2);
+              document.getElementById('lblResult').innerHTML=result;alert("Your result is"+result);
+            }
+            function subnum(){
+                return n1-n2;
+            }
+            function mul(){
+               var n1= document.getElementById("fn").value;
+               var n2= document.getElementById("sn").value;
+              var result=parseInt(n1)*parseInt(n2);
+              document.getElementById('lblResult').innerHTML=result;alert("Your result is"+result);
+            }
+            function mulnum(){
+                return n1*n2;
+            }
+            function div(){
+               var n1= document.getElementById("fn").value;
+               var n2= document.getElementById("sn").value;
+              var result=parseInt(n1)/parseInt(n2);
+              document.getElementById('lblResult').innerHTML=result;alert("Your result is"+result);
+            }
+            function addnum(){
+                return n1/n2;
+            }
+                </script>
+                You can calculate number here<br><br>
+                Enter First Number:<input type="number" id="fn"><br><br>
+                Enter Second Number:<input type="number" id="sn"><br><br>
+                <h3 id="lblResult"></h3>
+                <input type="button" id="add" value="+" onclick="add()">
+                <input type="button" id="sub" value="-" onclick="sub()">
+                <input type="button" id="mul" value="*" onclick="mul()">
+                <input type="button" id="div" value="/" onclick="div()"><br><br>
+                
+            </head>  
+        </body>
+    
+</html>
