@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            form{
+                display: flex;
+                flex-wrap: wrap;
+            }
+            
+            table{
+                border: black;
+                background-color: cadetblue;
+                margin-top: 15px;
+            }
+            tr{
+                border:2px dotted peachpuff;
+            }
+        </style>
+    </head>
+    <body>
+       
+        
+
+            <input class="textpadding" type="text" name="name" id="name" placeholder="Enter the name"><br>
+
+            <input class="textpadding" type="phone" name="phone" id="phone" placeholder="Enter the phone number."><br>
+
+            <input class="textpadding" type="email" name="email" id="email" placeholder="Enter the email address"><br>
+
+
+            <input class="textpadding" type="text" name="address" id="address" placeholder="Enter the address"><br>
+
+            <input type="radio" name="gender" value="Male" id="radio"><label name="Male">Male</label>
+
+            <input type="radio" name="gender" value="Female" id="radio"><label name="Male">Female</label><br>
+
+            <input style="margin-top: 10px;margin-left: 10px;" type="checkbox" name="c1" value="501" id="checkbox"><label name="c1">501</label>
+
+            <input style="margin-top: 10px;margin-left: 10px;" type="checkbox" name="c1" value="502" id="checkbox"><label name="c1">502</label>
+
+            <input style="margin-top: 10px;margin-left: 10px;" type="checkbox" name="c1" value="503" id="checkbox"><label name="c1">503</label><br>
+
+            <button  type="button" onclick="addFunction()">Add</button>
+
+         
+
+            <table id="table">
+
+                <thead>
+
+                    <th>Name</th>
+
+                    <th>Gender</th>
+
+                    <th>Subject</th>
+
+                    <th>Phone Number</th>
+
+                    <th>Email</th>
+
+                    <th>Address</th>
+
+                </thead>
+
+            </table>
+
+        <script>
+
+                
+
+                function addFunction(){
+
+                    var name=document.getElementById("name").value;
+
+                    var phone=document.getElementById("phone").value;
+
+                    var email=document.getElementById("email").value;
+
+                    var address=document.getElementById("address").value;
+
+                    var radio = document.getElementById("radio").value;
+
+                    var checkbox=document.getElementById("checkbox").value;
+
+
+
+                    var nameNode=document.createTextNode(name);
+
+                    var phoneNode=document.createTextNode(phone);
+
+                    var addressNode=document.createTextNode(address);
+
+                    var emailNode=document.createTextNode(email);
+
+                    var radioNode=document.createTextNode(radio);
+
+                    var checkboxNode=document.createTextNode(checkbox);
+
+                var table=document.getElementById("table");
+
+                var trow=document.createElement("tr");
+
+                var tcol1=document.createElement("td");
+
+                var tcol2=document.createElement("td");
+
+                var tcol3=document.createElement("td");
+
+                var tcol4=document.createElement("td");
+
+                var tcol5=document.createElement("td");
+
+                var tcol6=document.createElement("td");
+
+
+
+                table.appendChild(trow);
+
+                trow.appendChild(tcol1);
+
+                trow.appendChild(tcol2);
+
+                trow.appendChild(tcol3);
+
+                trow.appendChild(tcol4);
+
+                trow.appendChild(tcol5);
+
+                trow.appendChild(tcol6);
+
+
+
+                tcol1.appendChild(nameNode);  
+
+                tcol2.appendChild(radioNode);
+
+                tcol3.appendChild(checkboxNode);
+
+                tcol4.appendChild(phoneNode);  
+
+                tcol5.appendChild(emailNode);
+
+                tcol6.appendChild(addressNode);  
+
+
+
+                }
+
+            
+
+        </script> 
+    </body>
+</html>
