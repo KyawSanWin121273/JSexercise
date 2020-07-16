@@ -1,0 +1,71 @@
+mysql> select* from OrderMenu;
++---------+------------+------+--------+-------+------------+
+| OrderId | SaleDate   | Qty  | FoodId | Price | TotalPrice |
++---------+------------+------+--------+-------+------------+
+|       1 | 2019-05-15 |   10 |      2 |  2000 |       8000 |
+|       2 | 2019-05-16 |   10 |      3 |  2000 |       9000 |
+|       3 | 2019-05-17 |   12 |      4 |  1000 |       8000 |
+|       4 | 2019-05-18 |    2 |      5 |  1000 |       2000 |
+|       5 | 2019-05-19 |    7 |      1 |  1000 |       7000 |
++---------+------------+------+--------+-------+------------+
+5 rows in set (0.01 sec)
+
+mysql> select*from Menu;
++--------+-----------+-------------+
+| MenuId | Name      | Description |
++--------+-----------+-------------+
+|      1 | Chicken   | SoGood      |
+|      2 | Sandwises | SoGood      |
+|      3 | Pezza     | SoGood      |
+|      4 | Juice     | SoGood      |
+|      5 | Beer      | SoGood      |
++--------+-----------+-------------+
+5 rows in set (0.08 sec)
+
+mysql> select* from food;
++--------+------------+-------+--------+
+| FoodId | Name       | Price | MenuId |
++--------+------------+-------+--------+
+|      1 | Cake       |  1500 |      2 |
+|      2 | IceCream   |  1000 |      3 |
+|      3 | Cheese     |  1200 |      4 |
+|      4 | TomatoCake |  1800 |      5 |
+|      5 | Burger     |  2000 |      1 |
++--------+------------+-------+--------+
+5 rows in set (0.07 sec)
+1.
+mysql> select* from OrderMenu where TotalPrice in(select max(TotalPrice) from OrderMenu);
++---------+------------+------+--------+-------+------------+
+| OrderId | SaleDate   | Qty  | FoodId | Price | TotalPrice |
++---------+------------+------+--------+-------+------------+
+|       2 | 2019-05-16 |   10 |      3 |  2000 |       9000 |
++---------+------------+------+--------+-------+------------+
+1 row in set (0.00 sec)
+2.
+mysql> select SaleDate,TotalPrice from OrderMenu where FoodId=2;
++------------+------------+
+| SaleDate   | TotalPrice |
++------------+------------+
+| 2019-05-15 |       8000 |
++------------+------------+
+1 row in set (0.00 sec)
+3.
+mysql> select Sum(TotalPrice) from OrderMenu where SaleDate between '2019-5-16' and '2019-5-18';
++-----------------+
+| Sum(TotalPrice) |
++-----------------+
+|           19000 |
++-----------------+
+1 row in set (0.11 sec)
+4.
+mysql> select food.Name,(select max(TotalPrice) from OrderMenu where OrderMenu.FoodId=Food.FoodId)as TotalPrice From Food;
++------------+------------+
+| Name       | TotalPrice |
++------------+------------+
+| Burger     |       2000 |
+| Cake       |       7000 |
+| Cheese     |       9000 |
+| IceCream   |       8000 |
+| TomatoCake |       8000 |
++------------+------------+
+5 rows in set (0.34 sec)
