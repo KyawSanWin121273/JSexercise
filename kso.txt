@@ -1,0 +1,86 @@
+Database changed
+mysql> select* from player;
++-----------+--------------------+---------+------+---------+---------+--------+
+| player_id | player_name        | jersyno | age  | salary  | team_id | height |
++-----------+--------------------+---------+------+---------+---------+--------+
+| p1        | Victor Lindelof    | 3       |   30 | 1000000 | t1      |      6 |
+| p2        | Christiano Ronaldo | 7       |   35 | 1000000 | t1      |      7 |
+| p3        | Lionel Messi       | 12      |   32 | 1200000 | t2      |      6 |
+| p4        | Bukayo Saka        | 5       |   41 | 1200000 | t1      |      4 |
++-----------+--------------------+---------+------+---------+---------+--------+
+4 rows in set (0.00 sec)
+
+mysql> select* from team;
++---------+-----------+-------------+
+| team_id | team_name | foundeddate |
++---------+-----------+-------------+
+| t1      | Man U     | 1980-02-27  |
+| t2      | Barcelon  | 1974-06-12  |
++---------+-----------+-------------+
+2 rows in set (0.09 sec)
+
+1 mysql> select* from player where team_id='t1';
++-----------+--------------------+---------+------+---------+---------+--------+
+| player_id | player_name        | jersyno | age  | salary  | team_id | height |
++-----------+--------------------+---------+------+---------+---------+--------+
+| p1        | Victor Lindelof    | 3       |   30 | 1000000 | t1      |      6 |
+| p2        | Christiano Ronaldo | 7       |   35 | 1000000 | t1      |      7 |
+| p4        | Bukayo Saka        | 5       |   41 | 1200000 | t1      |      4 |
++-----------+--------------------+---------+------+---------+---------+--------+
+3 rows in set (0.00 sec)
+
+2 mysql> select* from player where player.salary>100000;
++-----------+--------------------+---------+------+---------+---------+--------+
+| player_id | player_name        | jersyno | age  | salary  | team_id | height |
++-----------+--------------------+---------+------+---------+---------+--------+
+| p1        | Victor Lindelof    | 3       |   30 | 1000000 | t1      |      6 |
+| p2        | Christiano Ronaldo | 7       |   35 | 1000000 | t1      |      7 |
+| p3        | Lionel Messi       | 12      |   32 | 1200000 | t2      |      6 |
+| p4        | Bukayo Saka        | 5       |   41 | 1200000 | t1      |      4 |
++-----------+--------------------+---------+------+---------+---------+--------+
+4 rows in set (0.06 sec)
+3 mysql> select team_name,(select SUM(salary) from player where player.team_id=team.team_id)as salary from team;
++-----------+---------+
+| team_name | salary  |
++-----------+---------+
+| Man U     | 3200000 |
+| Barcelon  | 1200000 |
++-----------+---------+
+2 rows in set (0.13 sec)
+
+4 mysql> select* from player where player.height<5;
++-----------+-------------+---------+------+---------+---------+--------+
+| player_id | player_name | jersyno | age  | salary  | team_id | height |
++-----------+-------------+---------+------+---------+---------+--------+
+| p4        | Bukayo Saka | 5       |   41 | 1200000 | t1      |      4 |
++-----------+-------------+---------+------+---------+---------+--------+
+1 row in set (0.00 sec)
+5 mysql> select team.team_name,(select AVG(salary) from player where player.team_id=team.team_id) as vag_salary from team;
++-----------+--------------+
+| team_name | vag_salary   |
++-----------+--------------+
+| Man U     | 1066666.6667 |
+| Barcelon  | 1200000.0000 |
++-----------+--------------+
+2 rows in set (0.00 sec)
+
+6 mysql> select player.player_name,salary from player where salary in (select min(salary) from player);
++--------------------+---------+
+| player_name        | salary  |
++--------------------+---------+
+| Victor Lindelof    | 1000000 |
+| Christiano Ronaldo | 1000000 |
++--------------------+---------+
+2 rows in set (0.09 sec)
+
+7 mysql> select* from player where player.age>30 && player.salary>100000;
++-----------+--------------------+---------+------+---------+---------+--------+
+| player_id | player_name        | jersyno | age  | salary  | team_id | height |
++-----------+--------------------+---------+------+---------+---------+--------+
+| p2        | Christiano Ronaldo | 7       |   35 | 1000000 | t1      |      7 |
+| p3        | Lionel Messi       | 12      |   32 | 1200000 | t2      |      6 |
+| p4        | Bukayo Saka        | 5       |   41 | 1200000 | t1      |      4 |
++-----------+--------------------+---------+------+---------+---------+--------+
+3 rows in set, 1 warning (0.00 sec)
+
+mysql>
